@@ -4,7 +4,7 @@
     @apply font-semibold;
     @apply bg-amber-800;
     @apply text-white;
-    @apply hover:bg-amber-400 hover:text-amber-800 focus:bg-amber-800;
+    @apply hover:bg-amber-400 focus:bg-amber-800;
     @apply transition-all;
   }
   .btn-outline {
