@@ -1,8 +1,23 @@
 @layer components {
-  .btn {
+  .btn-solid {
     @apply px-3 py-2 rounded;
+    @apply font-semibold;
     @apply bg-amber-800;
     @apply text-white;
-    @apply hover:bg-amber-400 hover:text-amber-800 hover:shadow  hover:duration-300 hover:-translate-y-1;
+    @apply hover:bg-amber-400 hover:text-amber-800 focus:bg-amber-800;
+    @apply transition-all;
+  }
+  .btn-outline {
+    @apply px-3 py-2 rounded;
+    @apply font-semibold;
+    @apply bg-amber-400 bg-opacity-10 hover:bg-opacity-25 focus:bg-opacity-30;
+    @apply border border-amber-600;
+    @apply transition-all;
+  }
+  .btn-ghost {
+    @apply px-3 py-2 rounded;
+    @apply font-semibold;
+    @apply bg-amber-400 bg-opacity-0 hover:bg-opacity-25 focus:bg-opacity-30;
+    @apply transition-all;
   }
 }

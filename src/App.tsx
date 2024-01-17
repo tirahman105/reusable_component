@@ -6,7 +6,9 @@ function App() {
   return (
     <Container>
       <div className="h-screen w-full flex justify-center items-center">
-        <Button outline={true}></Button>
+        <div className="w-96 border border-slate-600 p-10 rounded">
+          <Button varient="outline" className="w-full"></Button>
+        </div>
       </div>
     </Container>
   );
