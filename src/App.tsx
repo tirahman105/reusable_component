@@ -15,7 +15,11 @@ function App() {
       <div className="h-screen w-full flex justify-center items-center">
         <Button onClick={() => setModal((prev) => !prev)}>Open Modal</Button>
         <Modal isOpen={modal} onClose={handleModalClose}>
-          <h1>This is modal</h1>
+          <Modal.Header>
+            <h1>This is modal header</h1>
+            <Modal.CloseButton></Modal.CloseButton>
+          </Modal.Header>
+          <p>This is modal content</p>
         </Modal>
       </div>
     </Container>
