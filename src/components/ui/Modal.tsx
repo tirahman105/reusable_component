@@ -69,13 +69,13 @@ const CloseButton = ({ children }: TCloseButton) => {
           aria-hidden="true"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="3"
+          strokeWidth="3"
           stroke="currentColor"
           className="size-6  bg-red-400 text-white rounded-lg p-0.5"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             d="M6 18 18 6M6 6l12 12"
           />
         </svg>
