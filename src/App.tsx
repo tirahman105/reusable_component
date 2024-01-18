@@ -1,14 +1,22 @@
+import { useState } from "react";
 import MainLayout from "./components/layout/MainLayout";
 import Button from "./components/ui/Button";
 import Container from "./components/ui/Container";
+import Modal from "./components/ui/Modal";
 
 function App() {
+  const [modal, setModal] = useState(false);
+
+  const handleModalClose = () => {
+    setModal((prev) => !prev);
+  };
   return (
     <Container>
       <div className="h-screen w-full flex justify-center items-center">
-        <div className="w-96 border border-slate-600 p-10 rounded">
-          <Button className="w-full"></Button>
-        </div>
+        <Button onClick={() => setModal((prev) => !prev)}>Open Modal</Button>
+        <Modal isOpen={modal} onClose={handleModalClose}>
+          <h1>This is modal</h1>
+        </Modal>
       </div>
     </Container>
   );
