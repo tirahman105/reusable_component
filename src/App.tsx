@@ -1,43 +1,54 @@
-import { FormEvent, useState } from "react";
-import MainLayout from "./components/layout/MainLayout";
-import Button from "./components/ui/Button";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import {
+  Form,
+  FormSection,
+  Input,
+  SubmitForm,
+} from "./components/reuseableForm";
 import Container from "./components/ui/Container";
-import Modal from "./components/ui/Modal";
-import NormalForm from "./components/NormalForm/NormalForm";
+import { z } from "zod";
 
 function App() {
-  const [modal, setModal] = useState(false);
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<TTest>();
 
-  const handleModalClose = () => {
-    setModal((prev) => !prev);
+  const onSubmit = (data: FieldValues) => {
+    console.log(data);
   };
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    console.log("Clicked");
-    if (true) {
-      handleModalClose();
-    }
-  };
+  const TestSchema = z.object({
+    name: z.string(),
+    email: z.string().email(),
+  });
+
+  type TTest = z.infer<typeof TestSchema>;
   return (
     <Container>
-      <NormalForm></NormalForm>
-      {/* <div className="h-screen w-full flex justify-center items-center">
-        <Button onClick={() => setModal((prev) => !prev)}>Open Modal</Button>
-        <Modal isOpen={modal} onClose={handleModalClose}>
-          <Modal.Header>
-            <h1>This is modal header</h1>
-            <Modal.CloseButton></Modal.CloseButton>
-          </Modal.Header>
-          <p>This is modal content</p>
-          <form onSubmit={handleSubmit} className="bg-slate-300 p-10">
-            <input type="text" className="p-2 rounded mx-1" />
-            <button className="bg-blue-100" type="submit">
-              Submit
-            </button>
-          </form>
-        </Modal>
-      </div> */}
+      <Form onSubmit={handleSubmit(onSubmit) as SubmitHandler<FieldValues>}>
+        <FormSection>
+          <div className="w-full max-w-md">
+            <label className="block" htmlFor="name">
+              Name
+            </label>
+            <input type="text" id="name" {...register("name")} />
+            {errors.name && (
+              <span className="text-sm text-red-500">
+                {errors.name.message}
+              </span>
+            )}
+          </div>
+          <Input
+            type="email"
+            register={register("email")}
+            errors={errors}
+            label="Email"
+          />
+        </FormSection>
+        <SubmitForm></SubmitForm>
+      </Form>
     </Container>
   );
 }
